@@ -11,8 +11,8 @@ class PageController extends Controller
      *
      * @return Renderable
      */
-    public function home()
+    public function books()
     {
-        return view('pages.home');
+        return view('pages.books');
     }
 }

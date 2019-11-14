@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,5 +15,6 @@
 
 Auth::routes();
 
-Route::get('/', 'PageController@home')
-    ->name('home');
+Route::redirect('/', 'books');
+
+Route::get('books', 'PageController@books');
