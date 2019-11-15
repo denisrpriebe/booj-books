@@ -5,6 +5,8 @@ namespace App\Domain\OpenLibrary;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Book implements Arrayable
 {
@@ -96,5 +98,34 @@ class Book implements Arrayable
         return $bookCollection->filter(function (Book $book) {
             return !is_null($book->author) && !is_null($book->published);
         })->take(7);
+    }
+
+    /**
+     * Defines how to parse out additional details about a book with the
+     * given raw data from the API.
+     *
+     * @param string $olid
+     * @param array $data
+     * @return array
+     */
+    public static function details(string $olid, array $data)
+    {
+        $rawCover = Arr::get($data, 'covers.0', null);
+        $rawDescription = Arr::get($data, 'description', 'No description available.');
+        $onList = Auth::check() ? Auth::user()->books()->where('olid', $olid)->exists() : false;
+
+        $image = is_null($rawCover)
+            ? asset('storage/images/booj-logo.png')
+            : 'http://covers.openlibrary.org/b/id/' . $rawCover . '-M.jpg';
+
+        $description = Str::limit(is_array($rawDescription)
+            ? array_pop($description)
+            : $rawDescription, 550);
+
+        return [
+            'on_list' => $onList,
+            'description' => $description,
+            'image' => $image
+        ];
     }
 }

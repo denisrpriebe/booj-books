@@ -10,6 +10,14 @@ use Illuminate\Http\Response;
 class ListController extends Controller
 {
     /**
+     * ListController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -33,17 +41,6 @@ class ListController extends Controller
         $book = $request->user()->books()->create($request->all());
 
         return response($book, 201);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Book $book
-     * @return Response
-     */
-    public function show(Book $book)
-    {
-        return response($book);
     }
 
     /**

@@ -15,7 +15,7 @@ $factory->define(Book::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'author' => $faker->name,
         'description' => $faker->paragraph,
-        'image' => 'http://booj-books.test/storage/images/booj-logo.png',
+        'image' => asset('storage/images/booj-logo.png'),
         'published' => $faker->year,
     ];
 });

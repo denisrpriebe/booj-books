@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        window.BoojBooks = @json([
+            'isSignedIn' => auth()->check()
+        ])
+    </script>
+
 </head>
 <body>
     <div id="app">

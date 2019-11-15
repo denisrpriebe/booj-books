@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
@@ -27,6 +28,16 @@ class Book extends Model implements Sortable
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'user_id' => 'integer',
+        'position' => 'integer',
+    ];
+
+    /**
      * The sortable configuration for the model.
      *
      * @var array
@@ -35,6 +46,16 @@ class Book extends Model implements Sortable
         'order_column_name' => 'position',
         'sort_when_creating' => true,
     ];
+
+    /**
+     * Build eloquent builder of sortable.
+     *
+     * @return Builder
+     */
+    public function buildSortQuery()
+    {
+        return static::query()->where('user_id', $this->user_id);
+    }
 
     /**
      * Get the route key for the model.

@@ -35,6 +35,7 @@
             <div v-if="!isLoading && !searchQuery" class="text-center text-muted mt-5">
                 <i class="fa fa-book books-icon"></i>
                 <h5 class="mt-2">Find your next book</h5>
+                <p>Try "the hobbit" or "lord of the rings"</p>
             </div>
 
         </div>

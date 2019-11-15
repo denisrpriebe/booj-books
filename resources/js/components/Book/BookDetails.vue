@@ -7,21 +7,29 @@
         </div>
 
         <!-- Action buttons -->
-        <div v-if="!isLoading" class="d-flex justify-content-between mb-3">
+        <div v-if="!isLoading" class="d-flex justify-content-between align-items-center mb-3">
+
             <button class="btn btn-sm btn-primary" @click="$emit('back')">
                 <i class="fas fa-chevron-left"></i>
                 Back
             </button>
 
-            <button v-if="!details.on_list" @click="addToList" class="btn btn-sm btn-success">
+            <button v-if="!details.on_list && isSignedIn" @click="addToList"
+                    class="btn btn-sm btn-success">
                 <i class="fas fa-plus-circle"></i>
                 Add to my list
             </button>
 
-            <button v-if="details.on_list" @click="removeFromList" class="btn btn-sm btn-danger">
+            <button v-if="details.on_list && isSignedIn" @click="removeFromList"
+                    class="btn btn-sm btn-danger">
                 <i class="fas fa-trash"></i>
                 Remove from my list
             </button>
+
+            <p v-if="!isSignedIn" href="/register" class="text-info mb-0">
+                <i class="fas fa-info-circle"></i>
+                Login or register to save this book.
+            </p>
 
         </div>
 
@@ -73,6 +81,10 @@
             endpoint() {
                 return `/api/books/${this.book.olid}`
             },
+
+            isSignedIn() {
+                return BoojBooks.isSignedIn
+            }
 
         },
 
