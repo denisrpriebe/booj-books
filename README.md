@@ -22,3 +22,7 @@ This application has been built with Laravel 6.x, Vue.js and Bootstrap 4.
 Behind the scenes, this application is powered by [Open Library's API](https://openlibrary.org/developers/api). 
 
 On a personal note, after working with this API, I am not happy with it. Data returned from the Open Library API is inconsistent, confusing and sometimes doesn't return any results at all. If I where to do this project again I would definitely look into consuming a different third party API. However, I think it will suffice for this simple code test.
+
+### CI and Deployment
+
+This project has been deployed in the cloud using Forge and Digital Ocean. You can access it by going to: [http://159.89.237.232](http://159.89.237.232)
