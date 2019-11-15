@@ -19,7 +19,7 @@ This application has been built with Laravel 6.x, Vue.js and Bootstrap 4.
 
 ### CI and Deployment
 
-<p align="center">
+<p>
 <a href="https://app.codeship.com/projects/374302"><img src="https://app.codeship.com/projects/4a59fa30-ea1d-0137-b80b-22ee8611456c/status?branch=dev" alt="Build Status"></a>
 <a href="https://codecov.io/gh/denisrpriebe/booj-books">
   <img src="https://codecov.io/gh/denisrpriebe/booj-books/branch/dev/graph/badge.svg?token=0dqdBCzHwl" />
