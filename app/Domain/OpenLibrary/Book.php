@@ -4,6 +4,7 @@ namespace App\Domain\OpenLibrary;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class Book implements Arrayable
 {
@@ -51,29 +52,32 @@ class Book implements Arrayable
     }
 
     /**
-     * Defines how to create a new "Book" with the given raw data from the API.
+     * Defines how to create a new "Book" with the given raw data
+     * from the API.
      *
      * @param array $data
      * @return Book
      */
     public static function createFromApi(array $data)
     {
+        $olid = Arr::get($data, 'key', '');
+
         $book = new static;
 
-        $book->olid = Arr::get($data, 'key', null);
+        $book->olid = substr($olid, strpos($olid, 'OL'));
         $book->title = Arr::get($data, 'title', 'Book title not found');
-        $book->author = Arr::get($data, 'author_name.0', 'No author found');
-        $book->published = Arr::get($data, 'first_publish_year', 'No publish year found');
+        $book->author = Arr::get($data, 'author_name.0', null);
+        $book->published = Arr::get($data, 'first_publish_year', null);
 
         return $book;
     }
 
     /**
-     * Defines how to create a collection of new "Books" with the given
-     * raw data from the API.
+     * Defines how to create a collection of new "Books" with raw
+     * data from the API.
      *
      * @param array $data
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public static function createManyFromApi(array $data)
     {
@@ -85,6 +89,12 @@ class Book implements Arrayable
             $bookCollection->push(self::createFromApi($book));
         }
 
-        return $bookCollection->take(7);
+        /*
+         * Remove any books that do not have an author or publish
+         * date and return only the top 7 books.
+         */
+        return $bookCollection->filter(function (Book $book) {
+            return !is_null($book->author) && !is_null($book->published);
+        })->take(7);
     }
 }

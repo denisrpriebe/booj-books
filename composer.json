@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
-        "nategood/httpful": "^0.2.20"
+        "nategood/httpful": "^0.2.20",
+        "spatie/eloquent-sortable": "^3.7"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.2",

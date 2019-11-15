@@ -42,68 +42,16 @@ class BookController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param Book $book
+     * @param string $olid
      * @return Response
+     * @throws ConnectionErrorException
      */
-    public function show(Book $book)
+    public function show(string $olid)
     {
-        //
-    }
+        $book = $this->api->book($olid);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Book $book
-     * @return Response
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param Book $book
-     * @return Response
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Book $book
-     * @return Response
-     */
-    public function destroy(Book $book)
-    {
-        //
+        return response($book);
     }
 }
