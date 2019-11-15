@@ -17,12 +17,21 @@ This application allows users to keep track of books they would like to read. Us
 
 This application has been built with Laravel 6.x, Vue.js and Bootstrap 4.
 
+### CI and Deployment
+
+<p align="center">
+<a href="https://app.codeship.com/projects/374302"><img src="https://app.codeship.com/projects/4a59fa30-ea1d-0137-b80b-22ee8611456c/status?branch=dev" alt="Build Status"></a>
+<a href="https://codecov.io/gh/denisrpriebe/booj-books">
+  <img src="https://codecov.io/gh/denisrpriebe/booj-books/branch/dev/graph/badge.svg?token=0dqdBCzHwl" />
+</a>
+</p>
+
+Continous integration has been setup with Codeship and CodeCov to insure we have a passing build with good code coverage.
+
+This project has been deployed in the cloud using Forge and Digital Ocean. You can access it by going to: [http://159.89.237.232](http://159.89.237.232)
+
 ### Open Library API
 
 Behind the scenes, this application is powered by [Open Library's API](https://openlibrary.org/developers/api). 
 
-On a personal note, after working with this API, I am not happy with it. Data returned from the Open Library API is inconsistent, confusing and sometimes doesn't return any results at all. If I where to do this project again I would definitely look into consuming a different third party API. However, I think it will suffice for this simple code test.
-
-### CI and Deployment
-
-This project has been deployed in the cloud using Forge and Digital Ocean. You can access it by going to: [http://159.89.237.232](http://159.89.237.232)
+On a side note, after working with this API, I am not happy with it. Data returned from the Open Library API is inconsistent, confusing and sometimes doesn't return any results at all. If I where to do this project again I would definitely look into consuming a different third party API. However, I think it will suffice for this simple code test.
