@@ -24,6 +24,10 @@
                 </select>
             </div>
 
+            <p v-if="!isLoading && listHasBooks" class="font-weight-bold mt-4">
+                Total books: {{ list.length }}
+            </p>
+
             <!-- Show our list of books -->
             <div v-if="!isLoading" class="list-group">
                 <draggable v-model="list" v-bind="dragOptions" group="goals" @start="drag=true" @end="saveList">

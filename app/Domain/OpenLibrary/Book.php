@@ -115,7 +115,7 @@ class Book implements Arrayable
         $onList = Auth::check() ? Auth::user()->books()->where('olid', $olid)->exists() : false;
 
         $image = is_null($rawCover)
-            ? asset('storage/images/booj-logo.png')
+            ? asset('images/booj-logo.png')
             : 'http://covers.openlibrary.org/b/id/' . $rawCover . '-M.jpg';
 
         $description = Str::limit(is_array($rawDescription)

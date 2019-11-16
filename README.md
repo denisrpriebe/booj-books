@@ -32,6 +32,6 @@ This project has been deployed in the cloud using Forge and Digital Ocean. You c
 
 ### Open Library API
 
-Behind the scenes, this application is powered by [Open Library's API](https://openlibrary.org/developers/api). 
+Behind the scenes, this application is powered by [Open Library's API](https://openlibrary.org/developers/api). *Unfortunately, it appears that a vast majority of the books this API provides data for are missing images and descriptions among other things.*
 
 On a side note, after working with this API, I am not happy with it. Data returned from the Open Library API is inconsistent, confusing and sometimes doesn't return any results at all. If I where to do this project again I would definitely look into consuming a different third party API. However, I think it will suffice for this simple code test.
